@@ -15,7 +15,7 @@ app.use(express.json())
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.ro5atxz.mongodb.net/?retryWrites=true&w=majority`;
-console.log(uri);
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
@@ -31,7 +31,6 @@ async function run() {
 
             const query = {};
             const result = await serviceCollection.find(query).toArray();
-            console.log(result);
             res.send(result)
 
         })
@@ -39,7 +38,6 @@ async function run() {
 
             const query = {};
             const result = await cuponCollection.find(query).toArray();
-            console.log(result);
             res.send(result)
 
         })
@@ -47,7 +45,6 @@ async function run() {
 
             const query = {};
             const result = await moreCategoriesCollection.find(query).toArray();
-            console.log(result);
             res.send(result)
 
         })
