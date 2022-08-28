@@ -24,11 +24,29 @@ async function run() {
         await client.connect()
 
         const serviceCollection = client.db('sharePal').collection('product');
+        const cuponCollection = client.db('sharePal').collection('cupon');
+        const moreCategoriesCollection = client.db('sharePal').collection('moreCategories');
 
         app.get('/products', async (req, res) => {
 
             const query = {};
             const result = await serviceCollection.find(query).toArray();
+            console.log(result);
+            res.send(result)
+
+        })
+        app.get('/cupons', async (req, res) => {
+
+            const query = {};
+            const result = await cuponCollection.find(query).toArray();
+            console.log(result);
+            res.send(result)
+
+        })
+        app.get('/moreCategories', async (req, res) => {
+
+            const query = {};
+            const result = await moreCategoriesCollection.find(query).toArray();
             console.log(result);
             res.send(result)
 
